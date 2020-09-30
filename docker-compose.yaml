@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  nginx:
+    build: ./.build/nginx
+    ports:
+      - 80:80
+    volumes:
+      #- .build/nginx/nginx:/etc/nginx
+      - ./:/app
