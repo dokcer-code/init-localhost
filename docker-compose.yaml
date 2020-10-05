@@ -17,6 +17,19 @@ services:
       - ./:/app
     networks:
       - internal
+  postgres:
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      TZ: Europe/Moscow
+      POSTGRES_PASSWORD: init-localhost
+      POSTGRES_USER: init-localhost
+      POSTGRES_DB: init-localhost
+    networks:
+      - internal
 networks:
   internal:
     driver: bridge
@@ -24,3 +37,5 @@ networks:
       driver: default
       config:
         - subnet: 192.168.220.0/28
+volumes:
+  pgdata:
