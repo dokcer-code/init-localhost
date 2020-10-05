@@ -5,5 +5,22 @@ services:
     ports:
       - 80:80
     volumes:
-      #- .build/nginx/nginx:/etc/nginx
+      - .build/nginx/nginx:/etc/nginx
       - ./:/app
+    depends_on:
+      - php
+    networks:
+      - internal
+  php:
+    build: ./.build/php
+    volumes:
+      - ./:/app
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.220.0/28
