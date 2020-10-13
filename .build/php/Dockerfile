@@ -12,7 +12,7 @@ RUN docker-php-ext-enable xdebug
 ARG UID
 ARG GID
 
-RUN groupmod -o -g ${GID} www-data && usermod -o -u ${UID} www-data
+RUN groupmod -o -g ${GID} www-data && mkdir /home/www-data && usermod --home /home/www-data -o -u ${UID} www-data && chown -R www-data:www-data /home/www-data
 
 USER www-data
 
