@@ -9,4 +9,11 @@ RUN docker-php-ext-install pdo_pgsql zip
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 
+ARG UID
+ARG GID
+
+RUN groupmod -o -g ${GID} www-data && usermod -o -u ${UID} www-data
+
+USER www-data
+
 WORKDIR /app
