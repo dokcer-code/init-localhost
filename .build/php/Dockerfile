@@ -1,6 +1,6 @@
 FROM php:7.4-fpm
 
-RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer.phar && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
 RUN apt-get update && apt-get install -y curl libpq-dev libzip-dev zip unzip
 
