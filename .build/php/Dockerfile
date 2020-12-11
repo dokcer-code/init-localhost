@@ -8,6 +8,7 @@ RUN docker-php-ext-install pdo_pgsql zip
 
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
+COPY xdebug.ini /usr/local/etc/php/conf.d/
 
 ARG UID
 ARG GID
