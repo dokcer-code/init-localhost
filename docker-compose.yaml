@@ -5,9 +5,8 @@ services:
     ports:
       - 80:80
     volumes:
+      - ./:/app
       - .build/nginx/nginx:/etc/nginx
-    volumes_from:
-      - "php:ro"
     depends_on:
       - php
     networks:
