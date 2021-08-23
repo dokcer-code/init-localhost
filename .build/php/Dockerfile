@@ -6,9 +6,9 @@ ENV LC_ALL "C.UTF-8"
 
 RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer.phar && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
-RUN apt-get update && apt-get install -y curl libpq-dev libzip-dev zip unzip
+RUN apt-get update && apt-get install -y curl libpq-dev libzip-dev zip unzip git
 
-RUN docker-php-ext-install pdo_pgsql zip git
+RUN docker-php-ext-install pdo_pgsql zip
 
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
